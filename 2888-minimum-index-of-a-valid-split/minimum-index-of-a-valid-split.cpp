@@ -1,20 +1,44 @@
+// boore moyre algo 
 class Solution {
 public:
     int minimumIndex(vector<int>& nums) {
-    unordered_map<int,int>mp1;
-    unordered_map<int,int>mp2;
-    for(int &num:nums)
-    {
-        mp2[num]++;
-    }  
     int n=nums.size();
+    int maxi=-1,cnt=0;
     for(int i=0;i<n;i++)
     {
-        mp1[nums[i]]++;
-        mp2[nums[i]]--;
+        if(cnt==0)
+        {
+            maxi=nums[i];
+            cnt=1;
+        }
+        else if(maxi==nums[i])
+        {
+            cnt++;
+        }
+        else
+        {
+            cnt--;
+        }
+    }
+    int maxicnt=0;
+    for(auto &it:nums)
+    {
+        if(it==maxi)
+        {
+        maxicnt++;
+        }
+    }
+    int cnt1=0,cnt2=0;
+    for(int i=0;i<n;i++)
+    {
+        if(nums[i]==maxi)
+        {
+          cnt1++;   
+        }
         int n1=i+1;
         int n2=n-i-1;
-        if(mp1[nums[i]]>n1/2 && mp2[nums[i]]>n2/2)
+        cnt2=maxicnt-cnt1;
+        if(cnt1>n1/2 && cnt2>n2/2)
         {
             return i;
         }
