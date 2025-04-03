@@ -12,7 +12,7 @@ public:
     {
         maxr=max(maxr,(ll)maxdif*nums[i]);
         maxdif=max(maxdif,(ll)maxi-nums[i]);
-        maxi= max(maxi,(ll)nums[i]);;
+        maxi= max(maxi,(ll)nums[i]);
     } 
     return maxr;  
     }
