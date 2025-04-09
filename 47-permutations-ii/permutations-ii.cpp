@@ -1,3 +1,5 @@
+// simple backtracking karo swap karo phir unswap karo
+//unique chaiye toh setof vector use karo 
 class Solution {
 public:
     void f(vector<int>&nums,vector<vector<int>>&ans,int ind)
