@@ -1,3 +1,4 @@
+
 #define ll long long
 class Solution {
 public:
@@ -14,7 +15,7 @@ public:
        mp[nums[j]]++;
        while(pairs>=k)
        {
-        result+=(n-j);
+        result+=(n-j); // ek ek kareke badhega toh i to n-j bhi ek ek akrke add hote rahega 
         mp[nums[i]]--;
         pairs-=mp[nums[i]];
         i++;
