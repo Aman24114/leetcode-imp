@@ -13,7 +13,9 @@ public:
                 continue;
             }
             char val=board[r][c];
+            
             int boxindex=(r/3)*3+(c/3);
+
             if(rows[r].count(val) || cols[c].count(val) || boxes[boxindex].count(val))
             return false;
             rows[r].insert(val);
