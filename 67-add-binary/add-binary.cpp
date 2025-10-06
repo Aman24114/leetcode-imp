@@ -39,6 +39,7 @@ public:
             else 
             {
                 ans="0"+ans;
+                carry=1;
             }
         }
     }
