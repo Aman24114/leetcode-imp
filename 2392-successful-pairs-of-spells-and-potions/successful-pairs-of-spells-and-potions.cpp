@@ -1,44 +1,29 @@
-//float karne ke liye 1.0 semulitply karo
-#define ll long long
+#define ll long long 
 class Solution {
 public:
-    int f(int l ,int r ,vector<int>&p ,int minp)
+    vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, ll success) {
+    sort(potions.begin(),potions.end());
+    int n=spells.size();
+    vector<int>ans(n);
+    for(int i=0;i<n;i++)
     {
-        int ans=-1;
-        int mid=0;
-        while(l<=r)
+        ll sp=spells[i];
+        ll l=0,h=potions.size()-1;
+        int ind=-1;
+        while(l<=h)
         {
-            int mid=l+(r-l)/2;
-            if(p[mid]>=minp)
+            int mid=(l+h)/2;
+            if(potions[mid]*sp>=success)
             {
-                ans=mid;
-                r=mid-1;
+                ind=mid;
+                h=mid-1;
             }
-            else
+            else 
             {
                 l=mid+1;
             }
         }
-        return ans;
-    }
-    vector<int> successfulPairs(vector<int>& s, vector<int>& p, ll ss) {
-    int m=s.size(),n=p.size();
-    sort(p.begin(),p.end());
-    int maxp=p[n-1];
-    vector<int>ans;
-    for(int i=0;i<m;i++)
-    {
-        int sp=s[i];
-        ll minp=ceil((1.0*ss)/sp);
-        if(minp>maxp)
-        {
-            ans.push_back(0);
-            continue;
-        }
-        int ind=f(0,n-1,p,minp);
-        int cnt= n-ind;
-        ans.push_back(cnt);
-        
+        ans[i]=(ind==-1)?0:(potions.size()-ind);
     }
     return ans;
     }
