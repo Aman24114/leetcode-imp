@@ -11,20 +11,20 @@
  */
 #define ll long long 
 class Solution {
-    public:
-    ll res=0,total=0;
-    int f(TreeNode* root)
-    {
-        if(!root)
-        return 0;
-        int sub= f(root->left)+f(root->right)+root->val;
-        res=max(res,(total-sub)*sub);
-        return sub;
-    }
-    int maxProduct(TreeNode* root)
-    {
-       total=f(root);
-       f(root);
-       return res%int(1e9+7);     
-    }
+public:
+ll res=0,total=0;
+int f(TreeNode* root)
+{
+    if(!root)
+    return 0;
+    int sub= f(root->left)+f(root->right)+root->val;
+    res=max(res,(total-sub)*sub);
+    return sub;
+}
+int maxProduct(TreeNode* root)
+{
+    total=f(root);
+    f(root);
+    return res%int(1e9+7);     
+}
 };
